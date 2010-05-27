@@ -35,4 +35,4 @@ this is the body of the html page...
 &copy; 2010 Nicolas Rodriguez 
 <? MPage::EndBlock("copyright") ?>
 
-<? MPage::Process("master.php") ?>
+<? MPage::Render("master.php") ?>
