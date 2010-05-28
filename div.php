@@ -1,4 +1,4 @@
-<?
+<? 
 // Copyright (c) 2010, Nicolas Rodriguez 
 // All rights reserved.
 // 
@@ -17,34 +17,9 @@
 // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-class MPage {
+// require_once("autoload.php") 
+?>
 
-	static function Render($page) {
-		include($page);
-	}
-
-	static function BeginBlock() {
-		ob_start();
-	}
-
-	static function EndBlock($name) {
-		$data = ob_get_contents();
-		define("_block_" . $name . "_", $data, true);
-		ob_end_clean();
-	}
-
-	static function PlaceHolder($name, $clean = true) {
-		$temp = constant("_block_" . $name . "_");
-
-		// If you want to insert the same content in different places of your master page, $clean = false!
-		if ($clean) {
-			define("_block_" . $name . "_", null);
-		}
-
-		return $temp;
-	}
-
-	static function IsDefined($name) {
-		return defined("_block_" . $name . "_");
-	}
-}
+<div>
+	We just use MPage::Render() to render a partial view inside some other view. Nothing fancy.
+</div>

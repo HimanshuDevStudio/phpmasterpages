@@ -17,7 +17,7 @@
 // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require("autoload.php") 
+require_once("autoload.php") 
 ?>
 
 <html>
@@ -40,6 +40,11 @@ This is some ASP-like master page. You just have to define where you wanna put t
 <hr />
 
 <?= MPage::PlaceHolder("copyright") ?>
+
+<hr />
+
+<!-- Here goes the partial render of div.php -->
+<? MPage::Render("div.php") ?>
 
 </body>
 </html>

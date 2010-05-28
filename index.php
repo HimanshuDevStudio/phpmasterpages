@@ -17,18 +17,18 @@
 // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require("autoload.php") 
+require_once("autoload.php") 
 ?>
 
-<? MPage::BeginBlock() ?>Test Page<? MPage::EndBlock("title") ?>
+<? MPage::BeginBlock() ?>Greeting Form Demo<? MPage::EndBlock("title") ?>
 
 <? MPage::BeginBlock() ?>
-<ul>
-<li>First element</li>
-<li>You can do anything PHP can...</li>
-</ul>
 
-this is the body of the html page...
+<form action="result.php" method="post">
+Name: <input type="text" name="name" value="" /> 
+<input type="submit" value="Execute" />
+</form>
+
 <? MPage::EndBlock("body") ?>
 
 <? MPage::BeginBlock() ?>

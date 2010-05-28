@@ -17,34 +17,19 @@
 // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-class MPage {
+require("autoload.php") 
+?>
 
-	static function Render($page) {
-		include($page);
-	}
+<? MPage::BeginBlock() ?>Hi!<? MPage::EndBlock("title") ?>
 
-	static function BeginBlock() {
-		ob_start();
-	}
+<? MPage::BeginBlock() ?>
 
-	static function EndBlock($name) {
-		$data = ob_get_contents();
-		define("_block_" . $name . "_", $data, true);
-		ob_end_clean();
-	}
+<h1>Hi <? echo htmlspecialchars($_POST["name"]); ?>!. Nice to meet you!</h1>
 
-	static function PlaceHolder($name, $clean = true) {
-		$temp = constant("_block_" . $name . "_");
+<? MPage::EndBlock("body") ?>
 
-		// If you want to insert the same content in different places of your master page, $clean = false!
-		if ($clean) {
-			define("_block_" . $name . "_", null);
-		}
+<? MPage::BeginBlock() ?>
+&copy; 2010 Nicolas Rodriguez 
+<? MPage::EndBlock("copyright") ?>
 
-		return $temp;
-	}
-
-	static function IsDefined($name) {
-		return defined("_block_" . $name . "_");
-	}
-}
+<? MPage::Render("master.php") ?>
